@@ -122,11 +122,11 @@ inline ll tqs(int a, int b) {
     ll resu = 0;
     while (head[a] != head[b]) {
         if (dep[head[a]] > dep[head[b]]) std::swap(a, b);
-        resu += st.querym(1, 1, n, locator[head[b]], locator[b]);
+        resu += st.querys(1, 1, n, locator[head[b]], locator[b]);
         b = fa[head[b]];
     }
     if (dep[a] > dep[b]) std::swap(a, b);
-    resu += st.querym(1, 1, n, locator[a], locator[b]);
+    resu += st.querys(1, 1, n, locator[a], locator[b]);
     return resu;
 }
 
@@ -160,7 +160,7 @@ int main() {
         scanf("%d %d", &a, &b);
         if (op[1] == 'H') {
             st.edit(locator[a], b);
-            printf("----%lld %d\n", st.querys(1, 1, n, locator[a], locator[a]), b);
+            // printf("----%lld %d\n", st.querys(1, 1, n, locator[a], locator[a]), b);
             nodeweight[a] = b;
         } else if (op[1] == 'M') {
             printf("%lld\n", tqm(a, b));
