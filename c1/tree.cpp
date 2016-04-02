@@ -53,9 +53,10 @@ int genIntervalRight(int pcnt) {
 }
 
 int main() {
-  // freopen("tree.in", "r", stdin);
-  // freopen("tree.out", "w", stdout);
+  freopen("tree.in", "r", stdin);
+  freopen("tree.out", "w", stdout);
   puts("-1");
+  return 0;
   scanf("%d", &n);
   int tmp = 1, tn;
   tn = n;

@@ -17,13 +17,13 @@ char vis[207];
 struct vls {
   int v;
   vls *prev;
-} bufvls[207], *curvls;
+} bufvls[20 * 787 + 7], *curvls;
 struct edge {
   int to, c;
   char tag;
   edge *prev;
   vls *hd;
-} *head[207], bufeg[207], *cureg;
+} *head[207], bufeg[787], *cureg;
 void init() {
   curvls = bufvls;
   cureg = bufeg;
