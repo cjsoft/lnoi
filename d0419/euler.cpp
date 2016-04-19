@@ -15,7 +15,7 @@ ll euler(ll n) {
             while (n % i == 0) n /= i;
         }
     }
-    if (ans > 1) ans = ans / n * (n - 1);
+    if (n > 1) ans = ans / n * (n - 1);
     return ans;
 }
 int main() {
