@@ -24,10 +24,6 @@ void solve() {
         W += w[i];
         H = std::max(H, h[i]);
     }
-    // printf("   %d %d\n", resu, W * H);
-    // if (W * H == resu && PNTER) {
-        // puts("213");
-    // }
     resu = std::min(resu, W * H);
     if (PNTER && W * H == resu && !pnttag[W][H]) {
         pnttag[W][H] = true;
@@ -38,10 +34,7 @@ void solve() {
     }
     W = 0; H = 0;
     W = std::max(w[0] + w[1] + w[2], w[3]);
-    H = h[3] + std::max(w[0], std::max(w[1], w[2]));
-    // if (W * H == resu && PNTER) {
-        // puts("213");
-    // }
+    H = h[3] + std::max(h[0], std::max(h[1], h[2]));
     resu = std::min(resu, W * H);
     if (PNTER && W * H == resu && !pnttag[W][H]) {
         pnttag[W][H] = true;
@@ -52,24 +45,7 @@ void solve() {
     }
     W = 0; H = 0;
     W = std::max(w[0] + w[1] + w[2], w[3]);
-    H = std::max(h[2] + h[3], std::max(h[0] + h[3], h[1] + h[3]));
-    // if (W * H == resu && PNTER) {
-        // puts("213");
-    // }
-    resu = std::min(resu, W * H);
-    if (PNTER && W * H == resu && !pnttag[W][H]) {
-        pnttag[W][H] = true;
-        pnttag[H][W] = true;
-        if (W > H) std::swap(W, H);
-        cs[tot].a = W;
-        cs[tot++].b = H;
-    }
-    W = 0; H = 0;
-    W = std::max(w[0] + w[1] + w[2], w[2] + w[3]);
-    H = std::max(h[0], std::max(h[1] + h[2], h[3]));
-    // if (W * H == resu && PNTER) {
-        // puts("213");
-    // }
+    H = std::max(h[2], std::max(h[0] + h[3], h[1] + h[3]));
     resu = std::min(resu, W * H);
     if (PNTER && W * H == resu && !pnttag[W][H]) {
         pnttag[W][H] = true;
@@ -81,9 +57,6 @@ void solve() {
     W = 0; H = 0;
     W = std::max(w[0] + w[1] + w[3], w[0] + w[2] + w[3]);
     H = std::max(h[0], std::max(h[1] + h[2], h[3]));
-    // if (W * H == resu && PNTER) {
-        // puts("213");
-    // }
     resu = std::min(resu, W * H);
     if (PNTER && W * H == resu && !pnttag[W][H]) {
         pnttag[W][H] = true;
@@ -94,10 +67,7 @@ void solve() {
     }
     W = 0; H = 0;
     W = std::max(w[0] + w[2] + w[3], w[1] + w[2] + w[3]);
-    H = std::max(h[0] + h[1], std::max(h[2], h[3]));
-    // if (W * H == resu && PNTER) {
-        // puts("213");
-    // }
+    H = std::max(h[2], std::max(h[1] + h[0], h[3]));
     resu = std::min(resu, W * H);
     if (PNTER && W * H == resu && !pnttag[W][H]) {
         pnttag[W][H] = true;
@@ -106,14 +76,22 @@ void solve() {
         cs[tot].a = W;
         cs[tot++].b = H;
     }
+    // W = 0; H = 0;
+    // W = std::max(w[0] + w[2] + w[3], w[1] + w[2] + w[3]);
+    // H = std::max(h[0] + h[1], std::max(h[2], h[3]));
+    // resu = std::min(resu, W * H);
+    // if (PNTER && W * H == resu && !pnttag[W][H]) {
+    //     pnttag[W][H] = true;
+    //     pnttag[H][W] = true;
+    //     if (W > H) std::swap(W, H);
+    //     cs[tot].a = W;
+    //     cs[tot++].b = H;
+    // }
     W = 0; H = 0;
     W = std::max(w[0] + w[1], w[2] + w[3]);
     W = std::max(W, w[0] + w[3]);
     H = std::max(h[0] + h[2], h[1] + h[3]);
     H = std::max(H, h[2] + h[1]);
-    // if (W * H == resu && PNTER) {
-        // puts("213");
-    // }
     resu = std::min(resu, W * H);
     if (PNTER && W * H == resu && !pnttag[W][H]) {
         pnttag[W][H] = true;
