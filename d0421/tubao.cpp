@@ -44,26 +44,37 @@ bool cpp(pos a, pos b) {
 
 int main() {
     scanf("%d", &n);
-    int pos = 0;
+    int ppp = 0;
     for (int i = 0; i < n; ++i) {
         scanf("%d %d", &arr[i].x, &arr[i].y);
-        if (arr[pos].y < arr[i].y) {
-            pos = i;
-        } else if (arr[pos].y == arr[i].y) {
-            if (arr[pos].x > arr[i].x) {
-                pos = i;
+        if (arr[ppp].y < arr[i].y) {
+            ppp = i;
+        } else if (arr[ppp].y == arr[i].y) {
+            if (arr[ppp].x > arr[i].x) {
+                ppp = i;
             }
         }
     }
-    swap(arr[pos], arr[0]);
+    swap(arr[ppp], arr[0]);
     stt = arr[0];
+    sort(arr + 1, arr + n, cpp);
+    for (int i = 2; i < n; ++i) {
+        if (cmp(arr[i] - stt, arr[i - 1] - stt) == 0) {
+            // printf("    %d %d %d %d\n", arr[4].x, arr[4].y, arr[i - 1].x, arr[i - 1].y);
+            std::swap(arr[i - 1], arr[n - 1]);
+            --n;
+            // puts("ss");
+        }
+    }
     sort(arr + 1, arr + n, cpp);
     tubao.push(stt);
     stp.push(stt);
     for (int i = 1; i < n; ++i) {
-        pos qwe = arr[i] - stp.top(), asd = tubao.top() - stp.top();
+        pos qwe, asd;
+        qwe = arr[i] - stp.top();
+        asd = tubao.top() - stp.top();
         int dir = cmp(qwe, asd);
-        while (dir > 0 || (dir == 0 && )) {
+        while (dir > 0 || (dir == 0 && (qwe.x * asd.x < 0 || qwe.y * asd.y < 0))) {
             stp.pop();
             tubao.pop();
             dir = cmp(arr[i] - stp.top(), tubao.top() - stp.top());
@@ -75,6 +86,7 @@ int main() {
     }
     double ans = 0;
     while (!tubao.empty()) {
+        // printf("   %d %d\n", tubao.top().x, tubao.top().y);
         ans += Abs(tubao.top() - stt);
         stt = tubao.top();
         tubao.pop();
