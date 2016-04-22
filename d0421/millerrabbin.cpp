@@ -18,9 +18,9 @@ ll quickPow(ll x, ll y, ll MOD) {
 bool MillerRabbinTest(ll a, ll n, ll d, ll s) {
     if (n == 2 || n == a) return true;
     if (!(n & 1)) return false;
+    if (quickPow(a, d, n) == 1) return true;
     for (int i = 0; i < s; ++i) {
-        if (quickPow(a, d, n) == 1 ||
-            quickPow(a, (1 << i) * d, n) == n - 1)
+        if (quickPow(a, (1 << i) * d, n) == n - 1)
             return true;
     }
     return false;
